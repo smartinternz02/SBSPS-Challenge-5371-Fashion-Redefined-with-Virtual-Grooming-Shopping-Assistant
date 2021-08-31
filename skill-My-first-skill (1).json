@@ -1,0 +1,662 @@
+{
+  "intents": [
+    {
+      "intent": "enquiry",
+      "examples": [
+        {
+          "text": "What can you do?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "Good Afternoon"
+        },
+        {
+          "text": "Good Morning"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "HI"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "offer",
+      "examples": [
+        {
+          "text": "Any new offers"
+        },
+        {
+          "text": "Are there any new offers"
+        },
+        {
+          "text": "I would like to know about the new offers"
+        },
+        {
+          "text": "What are the new offers"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "deals",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "deals",
+          "synonyms": [
+            "best deals",
+            "latest deals",
+            "new deals"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "dress",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "dresses",
+          "synonyms": [
+            "dress",
+            "gown",
+            "saree",
+            "shortskirts"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "fashion_tips",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "fashion",
+          "synonyms": [
+            "fashion"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "FAshion_tips",
+          "synonyms": [
+            "fashion tips",
+            "fashion_tips",
+            "tips"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Good Afternoon",
+          "synonyms": [
+            "Afternoon",
+            "hi good afternoon"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Evening",
+          "synonyms": [
+            "Gd evening",
+            "Hi good evening"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Morning",
+          "synonyms": [
+            "hi good morning",
+            "Morning",
+            "Mrning"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Hello",
+          "synonyms": [
+            "Hi"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "offers",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "discount",
+          "synonyms": [
+            "50% discount",
+            "best sales",
+            "discount sale",
+            "lowest prices"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "offers",
+          "synonyms": [
+            "biggest deals",
+            "biggest offer",
+            "monthend slae",
+            "special offers"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "pants",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "pant",
+          "synonyms": [
+            "formal pants",
+            "jeans",
+            "shorts"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "shoes",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "shoes",
+          "synonyms": [
+            "mens shoes",
+            "shoes"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Tshirt",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Tshirt/Top",
+          "synonyms": [
+            "Top",
+            "Tshirt"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1630407871218",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_3_1630424263871",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1630424806579",
+      "previous_sibling": "node_8_1630425061496"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1630424807169",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1630424807181",
+      "previous_sibling": "handler_6_1630424807181"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1630424807169",
+      "context": {
+        "undefined": "gender"
+      },
+      "conditions": "gender",
+      "event_name": "input",
+      "dialog_node": "handler_6_1630424807181"
+    },
+    {
+      "type": "standard",
+      "title": "Enquiry",
+      "output": {
+        "generic": [
+          {
+            "title": "Here's what I can do",
+            "options": [
+              {
+                "label": "Show you the best deals",
+                "value": {
+                  "input": {
+                    "text": "best deals"
+                  }
+                }
+              },
+              {
+                "label": "Give you fashion tips on an apparel",
+                "value": {
+                  "input": {
+                    "text": "fashion_tips "
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#enquiry || @dress || @fashion_tips || @offers",
+      "dialog_node": "node_1_1630407871218",
+      "previous_sibling": "node_2_1630423625471"
+    },
+    {
+      "type": "standard",
+      "title": "tshirt",
+      "output": {
+        "generic": [
+          {
+            "title": "V neck Tshirts",
+            "source": "https://images.bewakoof.com/uploads/grid/app/types-of-t-shirts-for-men-bewakoof-blog-V-Neck-Style-1612353778.jpg",
+            "description": " Guys with round faces and broad shoulders can take advantage of this neckline as it flatters their body type giving them a slimmer look.",
+            "response_type": "image"
+          },
+          {
+            "title": "Polo t shirt collar styles",
+            "source": "https://images.bewakoof.com/uploads/grid/app/types-of-t-shirts-for-men-bewakoof-blog-Polo-Neck-Style-1612353777.jpg",
+            "description": "Men with a lean frame can take the most advantage of this t-shirt type.",
+            "response_type": "image"
+          },
+          {
+            "title": "Raglan sleeve type tshirts",
+            "source": "https://images.bewakoof.com/utter/content/2620/content_Raglan.jpg",
+            "description": "The cut and fit of the sleeves of a t-shirt can make the difference between a guy who knows his way around a shirt and someone who is trying too hard to impress.",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_3_1630424263871",
+      "conditions": "@Tshirt",
+      "dialog_node": "node_1_1630425056940",
+      "previous_sibling": "node_3_1630425053005"
+    },
+    {
+      "type": "standard",
+      "title": "greeting.",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Greetings || @greetings",
+      "dialog_node": "node_2_1630423625471",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "shoes",
+      "output": {
+        "generic": [
+          {
+            "title": "men's canvas shoe",
+            "source": "https://www.shoezone.com/Images/Static/HubContent/How-To-Wear-Mens-Shoes/canvas.jpg",
+            "description": "Canvas shoes should be reserved for all of your casual outfits. wear them with your otherwise monochromatic outfits. For example, a bright red pair of canvas lace ups would look great with an otherwise understated look of black jeans and a white tee.",
+            "response_type": "image"
+          },
+          {
+            "title": "Men’s Oxfords/Derbies",
+            "source": "https://www.shoezone.com/Images/Static/HubContent/How-To-Wear-Mens-Shoes/oxfords-derbies.jpg",
+            "description": "These should be worn for smart or formal occasions and you need to pay attention to the colour scheme more than anything. 9 times out of 10, they’ll be brown or black.",
+            "response_type": "image"
+          },
+          {
+            "title": "Men’s Brogues",
+            "source": "https://www.shoezone.com/Images/Static/HubContent/How-To-Wear-Mens-Shoes/brogues.jpg",
+            "description": "Don’t pair your brogues with your favourite tracksuit bottoms. Brogues and shorts should also never be in the same outfit. Stick to jeans, chinos and trousers.",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_3_1630424263871",
+      "conditions": "@shoes",
+      "dialog_node": "node_2_1630425048195"
+    },
+    {
+      "type": "standard",
+      "title": "fashion_tips",
+      "output": {
+        "generic": [
+          {
+            "title": "Select one of the apparels:",
+            "options": [
+              {
+                "label": "Tshirt/Top",
+                "value": {
+                  "input": {
+                    "text": "Tshirt/Top"
+                  }
+                }
+              },
+              {
+                "label": "Pants",
+                "value": {
+                  "input": {
+                    "text": "pants"
+                  }
+                }
+              },
+              {
+                "label": "Dresses",
+                "value": {
+                  "input": {
+                    "text": "dresses"
+                  }
+                }
+              },
+              {
+                "label": "Shoes",
+                "value": {
+                  "input": {
+                    "text": "Shoes"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1630407871218",
+      "conditions": "@fashion_tips",
+      "dialog_node": "node_3_1630424263871",
+      "previous_sibling": "node_8_1630424260501"
+    },
+    {
+      "type": "standard",
+      "title": "dresses",
+      "output": {
+        "generic": [
+          {
+            "title": "Women's Jumpers",
+            "source": "https://i.ytimg.com/vi/4xTEJ7zuiog/sddefault.jpg",
+            "description": "A free form, loose jumper works great if you have a curvy figure. If your figure is more flat, go for a layer jumper or a jumper with a tie or belt at the waist.  Jumpers look great with things like cardigans, belts, and blazers.",
+            "response_type": "image"
+          },
+          {
+            "title": "Jumpsuits",
+            "source": "https://thumbs.dreamstime.com/b/fashionable-woman-backless-jumpsuit-street-fashion-beautiful-young-whearing-fashion-photos-40007342.jpg",
+            "description": "They make you look taller and slimmer especially if worn with high heels or wedges",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_3_1630424263871",
+      "conditions": "@dress",
+      "dialog_node": "node_3_1630425053005",
+      "previous_sibling": "node_2_1630425048195"
+    },
+    {
+      "type": "standard",
+      "title": "best_deals",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hey , go to these Websites for the best deals:"
+              },
+              {
+                "text": "https://www.myntra.com/sales"
+              },
+              {
+                "text": "https://www.amazon.com/gp/goldbox"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_1_1630407871218",
+      "conditions": "@deals",
+      "dialog_node": "node_8_1630424260501"
+    },
+    {
+      "type": "standard",
+      "title": "pants",
+      "output": {
+        "generic": [
+          {
+            "title": "Woolen pants",
+            "source": "https://www.fashionbeans.com/wp-content/uploads/2017/10/7trou-styles-wool.jpg",
+            "description": "Perfect both for styling with other tailored separates or smartening a casual getup, the wool trouser has been a mainstay amongst industry insiders for years",
+            "response_type": "image"
+          },
+          {
+            "title": "Relaxed Leg Trousers",
+            "source": "https://www.fashionbeans.com/wp-content/uploads/2018/08/modern-trouser-19-4.jpg",
+            "description": "Too long and they’ll look like the floor-dragging bootcuts, so we’d suggest aiming for the hem to fall somewhere between the top of your shoe and its first set of eyelets.",
+            "response_type": "image"
+          },
+          {
+            "title": "Slimline Joggers",
+            "source": "https://www.fashionbeans.com/wp-content/uploads/2017/10/7trou-styles-joggers.jpg",
+            "description": "Gives the streetwear vibe. We’d suggest keeping the streetwear vibe going with a logo T-shirt from the likes of Palace, Stussy or Undefeated, a low-profile lifestyle runner on the foot and a slightly smarter bomber jacket.",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_3_1630424263871",
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "@pants",
+      "dialog_node": "node_8_1630425061496",
+      "previous_sibling": "node_1_1630425056940"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Afternoon, how can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1630423625471",
+      "conditions": "@greetings:(Good Afternoon)",
+      "dialog_node": "response_2_1630423789929",
+      "previous_sibling": "response_8_1630423736430"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi, Hope you are doing good. How may I help You?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1630423625471",
+      "conditions": "@greetings:Hello",
+      "dialog_node": "response_3_1630429222680",
+      "previous_sibling": "response_2_1630423789929"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Morning, How can I help you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1630423625471",
+      "conditions": "@greetings:(Good Morning)",
+      "dialog_node": "response_4_1630423701819"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Evening, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1630423625471",
+      "conditions": "@greetings:(Good Evening)",
+      "dialog_node": "response_8_1630423736430",
+      "previous_sibling": "response_4_1630423701819"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "",
+            "response_type": "image"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1630425061496",
+      "disabled": true,
+      "dialog_node": "response_8_1630425624659"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1630424263871",
+      "dialog_node": "slot_5_1630424807169",
+      "previous_sibling": "handler_1_1630424806579"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Welcome to Fashion Recommendz,"
+              },
+              {
+                "text": "Hi, Welcome to Fashion Recommendz"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
